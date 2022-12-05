@@ -36,7 +36,7 @@ WHERE EXTRACT(MONTH FROM date) = EXTRACT(MONTH FROM current_date)
 AND EXTRACT(YEAR FROM date) = EXTRACT(YEAR FROM current_date) 
 GROUP BY instructor_id, month 
 HAVING COUNT(*) >= 2 
-ORDER BY instructor_id;
+ORDER BY lessons_booked;
 
 --DEL 4: LISTA ALLA ENSEMBLES SOM KOMMER ATT HÅLLAS NÄSTA VECKA.
 SELECT ensemble.id AS ensemble_id, EXTRACT(DOW FROM ensemble.date) as day, ensemble.genre, 
@@ -90,14 +90,13 @@ FROM (SELECT student.id, sibling.student_id
   ORDER BY students;
 
 --DEL 3
-CREATE VIEW query3 AS
 SELECT EXTRACT(MONTH FROM current_date) as month, instructor_id, COUNT(*) AS lessons_booked 
 FROM lesson 
 WHERE EXTRACT(MONTH FROM date) = EXTRACT(MONTH FROM current_date) 
 AND EXTRACT(YEAR FROM date) = EXTRACT(YEAR FROM current_date) 
 GROUP BY instructor_id, month 
-HAVING COUNT(*) >= 1 
-ORDER BY instructor_id;
+HAVING COUNT(*) >= 2 
+ORDER BY lessons_booked;
 
 --DEL 4
 CREATE VIEW query4 AS
