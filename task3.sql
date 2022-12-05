@@ -35,7 +35,7 @@ FROM lesson
 WHERE EXTRACT(MONTH FROM date) = EXTRACT(MONTH FROM current_date) 
 AND EXTRACT(YEAR FROM date) = EXTRACT(YEAR FROM current_date) 
 GROUP BY instructor_id, month 
-HAVING COUNT(*) >= 1 
+HAVING COUNT(*) >= 2 
 ORDER BY instructor_id;
 
 --DEL 4: LISTA ALLA ENSEMBLES SOM KOMMER ATT HÅLLAS NÄSTA VECKA.
